@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7823844.svg)](https://doi.org/10.5281/zenodo.7823844)
+
 # Absement in detail
 
 Code associated with the "Absement in detail" paper, accepted for presentation at ICPhS 2023.
