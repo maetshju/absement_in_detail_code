@@ -13,9 +13,11 @@ function read_files(scale_f=sqrt)
     dirs = readdir("word_results")
     for d in ProgressBar(dirs)
         p = joinpath("word_results", d)
-        res = [BSON.load(joinpath(p, x))[:dat] for x in readdir(p)]
-        for i in 1:length(res)
-            res[i][:label] = dirs[i]
+		res = []
+        for (i, x) in enumerate(readdir(p))
+			r = BSON.load(joinpath(p, x))[:dat]
+			r = (r..., label=dirs[i])
+			push!(res, r)
         end
         sort!(res, by=x->x[:d] / scale_f(maximum(x[:path2])))
         position = findall(x->x[:label] == d, res)[1]

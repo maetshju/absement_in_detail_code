@@ -22,7 +22,7 @@ end
 
 function calc_path(s1, s2)
 	d, path1, path2 = dtw(s1, s2, euclidean)
-	dist_diff = [euclidean(s1[i], s2[j]) for (i, j) in zip(path1, path2)]
+	dist_diff = [euclidean(s1[:,i], s2[:,j]) for (i, j) in zip(path1, path2)]
 	accum = cumsum(dist_diff)
 	
 	dat = (d=d, path1=path1, path2=path2, d_time=dist_diff, absement_time=accum)
